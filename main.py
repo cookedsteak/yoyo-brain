@@ -2,7 +2,7 @@ from configparser import ConfigParser
 import argparse
 import importlib
 import string
-from utils import AliBucket, RedisCacher, MQNormal
+from utils import AliBucket, RedisCache, MQNormal
 
 if __name__ == '__main__':
     # python3 consume.py -q [model-name]
@@ -22,7 +22,7 @@ if __name__ == '__main__':
     # 设置告警图片存储介质
     ins.set_saver(AliBucket(args['config']))
     # 设置缓存兑现
-    ins.set_cacher(RedisCacher(args['config']))
+    ins.set_cacher(RedisCache(args['config']))
 
     # 队列
     if cfg.getint('app', 'debug') == 1:

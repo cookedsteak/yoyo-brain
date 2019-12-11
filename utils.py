@@ -75,7 +75,6 @@ class MQNormal:
         param = pika.ConnectionParameters(
             host=self.host,
             heartbeat=60,
-            # blocked_connection_timeout=60,
             credentials=credentials
         )
         return pika.BlockingConnection(param)
@@ -84,6 +83,5 @@ class MQNormal:
         param = pika.ConnectionParameters(
             host=self.host,
             heartbeat=5,
-            # blocked_connection_timeout=10
         )
         return pika.BlockingConnection(param)

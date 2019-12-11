@@ -1,2 +1,9 @@
-# yoyo-brain
-scene recognition with yolo-v3
+# About
+
+# Prerequisite
+
+# Architecture
+
+# Strategy of model usage
+
+# *Help
