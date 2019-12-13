@@ -76,6 +76,8 @@ class Wisdom(object):
         # getcwd 是获取工作目录
         path = os.path.split(os.path.realpath(__file__))[0]
         file_list = os.listdir(path + '/' + a)
+        print(file_list)
+        print(path)
 
         data_path = ""
         weights_path = ""

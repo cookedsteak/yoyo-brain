@@ -13,7 +13,7 @@ dbname=pokemon
 host=127.0.0.1
 port=0
 user='guest'
-passwd='guest'
+password='guest'
 
 [oss]
 auth_id=xxxx

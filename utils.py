@@ -4,7 +4,6 @@ from configparser import ConfigParser
 import oss2
 import redis
 
-COLOR_RED
 
 class DataSaver(object):
     """

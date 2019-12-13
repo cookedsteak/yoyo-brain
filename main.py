@@ -15,10 +15,10 @@ if __name__ == '__main__':
     cfg.read(args['config'])
 
     # import wisdom 下的类名(识别方法类)
-    mod = importlib.import_module('wisdom.' + args['model'])
+    mod = importlib.import_module('models.' + args['model'] + '.' + args['model'])
     # 获取类名
     main_class = getattr(mod, string.capwords(args['model']))
-    ins = main_class(args['model'], args['queue'])
+    ins = main_class(args['model'])
     # 设置告警图片存储介质
     ins.set_saver(AliBucket(args['config']))
     # 设置缓存兑现
