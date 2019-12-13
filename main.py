@@ -8,17 +8,17 @@ if __name__ == '__main__':
     # python3 consume.py -q [model-name]
     ap = argparse.ArgumentParser()
     ap.add_argument("-q", "--queue", required=True, help="the queue you wanna listen")
+    ap.add_argument("-m", "--model", required=True, help="select the model")
     ap.add_argument("-c", "--config", default="config.ini", help="config path")
-    ap.add_argument("-m", "--model", default="default", help="the model you wanna use")
     args = vars(ap.parse_args())
     cfg = ConfigParser()
     cfg.read(args['config'])
 
     # import wisdom 下的类名(识别方法类)
-    mod = importlib.import_module('wisdom.' + args['queue'])
+    mod = importlib.import_module('wisdom.' + args['model'])
     # 获取类名
-    main_class = getattr(mod, string.capwords(args['queue']))
-    ins = main_class(args['model'])
+    main_class = getattr(mod, string.capwords(args['model']))
+    ins = main_class(args['model'], args['queue'])
     # 设置告警图片存储介质
     ins.set_saver(AliBucket(args['config']))
     # 设置缓存兑现

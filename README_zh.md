@@ -6,6 +6,17 @@
 
 
 
+### python 依赖包
+1. pika
+2. oss
+3. redis
+4. numpy
+5. darknet
+6. cv2 (opencv)
+
+
+
+
 # 整体架构
 
 
