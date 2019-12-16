@@ -1,1 +1,1 @@
-[yoyo-eye] - frames -> [AMQP] - frames -> [yoyo-brain] -> [AMQP] -> [yoyo-month]
+[yoyo-eye] - frame -> [AMQP] -> [yoyo-brain] - scenario -> [AMQP] -> [yoyo-mouth] - message -> [client]
