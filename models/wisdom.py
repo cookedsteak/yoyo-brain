@@ -17,16 +17,6 @@ class Wisdom(object):
         raise NotImplementedError
 
     def after_callback(self, ch, load, frame, frame_cropped):
-        """
-        回调图像违规后的操作，分为：
-        1. 存储图像
-        2. 放入通知队列
-        :param ch:
-        :param load:
-        :param frame:
-        :param frame_cropped:
-        :return:
-        """
         raise NotImplementedError
 
     def check_alarm(self, key, ex_time):
@@ -45,14 +35,6 @@ class Wisdom(object):
         self.saver.do_save(file, file_path)
         return file_path
 
-    @staticmethod
-    def send_alarm(ch, body):
-        key_name = 'message'
-        ch.exchange_declare(exchange=key_name, exchange_type='direct')
-        ch.queue_declare(key_name)
-        ch.queue_bind(queue=key_name, exchange=key_name, routing_key=key_name)
-        ch.basic_publish(exchange=key_name, routing_key=key_name, body=body)
-
     def set_cacher(self, cacher):
         if isinstance(cacher, Cacher):
             self.cacher = cacher
@@ -66,12 +48,15 @@ class Wisdom(object):
             raise ValueError
 
     @staticmethod
+    def send_alarm(ch, body):
+        key_name = 'message'
+        ch.exchange_declare(exchange=key_name, exchange_type='direct')
+        ch.queue_declare(key_name)
+        ch.queue_bind(queue=key_name, exchange=key_name, routing_key=key_name)
+        ch.basic_publish(exchange=key_name, routing_key=key_name, body=body)
+
+    @staticmethod
     def get_dn_net(a):
-        """
-        获得 darknet 神经网路
-        :param a:
-        :return:
-        """
         # 获得脚本的真实目录而不是执行目录
         # getcwd 是获取工作目录
         path = os.path.split(os.path.realpath(__file__))[0]
