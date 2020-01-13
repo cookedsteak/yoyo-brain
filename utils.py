@@ -20,6 +20,8 @@ class LocalFile(DataSaver):
         self.basic_path = cfg.get('saver', 'root_path')
 
     def do_save(self, file, file_path):
+        # @todo 存储
+        # 1. 设置存储服务器挂载
         pass
 
 
@@ -50,12 +52,10 @@ class RedisCache(Cacher):
     def __init__(self, config_path):
         cfg = ConfigParser()
         cfg.read(config_path)
-        if cfg.getint('app', 'debug') == 1:
-            self.rd = redis.StrictRedis(host=cfg.get('redis', 'host'), port=cfg.get('redis', 'port'))
-        else:
-            self.rd = redis.StrictRedis(host=cfg.get('redis', 'host'),
-                                        port=cfg.get('redis', 'port'),
-                                        password=cfg.get('redis', 'passwd'))
+
+        self.rd = redis.StrictRedis(host=cfg.get('redis', 'host'),
+                                    port=cfg.get('redis', 'port'),
+                                    password=cfg.get('redis', 'password'))
 
     def set_cache(self, key, value, ex):
         self.rd.set(key, value, ex=ex)

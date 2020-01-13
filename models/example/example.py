@@ -3,8 +3,6 @@ import json
 
 
 class Example(wisdom.Wisdom):
-    # 识别后不用进行处理的类别
-    class_white_list = ['excluded_people', 'excluded_car']
 
     def __init__(self, model_name):
         self.net, self.meta = self.get_dn_net(model_name)
@@ -41,7 +39,7 @@ class Example(wisdom.Wisdom):
 
     def after_callback(self, ch, load, frame, frame_cropped):
         # 消费者消费完后的处理逻辑
-        # 下面是示例：保存截屏
+        # 示例：保存截屏
         try:
             self.save_alarm(frame_cropped, load['save_path'])
         except Exception:
