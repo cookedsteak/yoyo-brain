@@ -2,6 +2,12 @@
 
 # Prerequisite
 
+### OpenCV
+
+### Darknet
+
+### RabbitMQ
+
 # Architecture
 ```
       scenario
@@ -20,5 +26,7 @@
 ```
 
 # Strategy of model usage
+
+# Use docker
 
 # *Help

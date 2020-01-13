@@ -40,8 +40,11 @@ def start_consumer(cfg, args, model):
 if __name__ == '__main__':
     # python3 main.py -q [model-name]
     ap = argparse.ArgumentParser()
+    # 你想要监听的队列
     ap.add_argument("-q", "--queue", default="default", help="the queue you wanna listen")
+    # 你想要指定使用的识别模型
     ap.add_argument("-m", "--model", default="default", help="select the model")
+    # 配置文件位置
     ap.add_argument("-c", "--config", default="config.ini", help="config path")
     a = vars(ap.parse_args())
     c = ConfigParser()
