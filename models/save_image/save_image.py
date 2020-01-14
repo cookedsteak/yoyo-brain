@@ -2,7 +2,7 @@ from models import wisdom
 import json
 
 
-class Example(wisdom.Wisdom):
+class SaveImage(wisdom.Wisdom):
 
     def __init__(self, model_name):
         self.net, self.meta = self.get_dn_net(model_name)

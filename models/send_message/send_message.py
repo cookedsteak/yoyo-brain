@@ -2,9 +2,7 @@ from models import wisdom
 import json
 
 
-class Example2(wisdom.Wisdom):
-    # 识别后不用进行处理的类别
-    class_white_list = ['excluded_people', 'excluded_car']
+class SendMessage(wisdom.Wisdom):
 
     def __init__(self, model_name):
         self.net, self.meta = self.get_dn_net(model_name)

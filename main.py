@@ -6,12 +6,21 @@ import string
 from utils import AliBucket, RedisCache, MQNormal
 
 
+def camel_string(s):
+    au = s.split("_")
+    n = ""
+    for sub in au:
+        n = n + string.capwords(sub)
+
+    return n
+
+
 def start_consumer(cfg, args):
     model = args['model']
     # import wisdom 下的类名(识别方法类)
     mod = importlib.import_module('models.' + model + '.' + model)
     # 获取类名
-    main_class = getattr(mod, string.capwords(model))
+    main_class = getattr(mod, camel_string(model))
     ins = main_class(model)
     # 设置告警图片存储介质
     ins.set_saver(AliBucket(args['config']))
